@@ -49,24 +49,29 @@ public class Conexion {
 		}
 	}
 
-	public void crearTabla(String db, String tab1, String tab2, String tab3) {
+	public void crearTabla(String db, String tab1, String tab2, String tab3, String tab4) {
 		try {
 			String querydb = "USE " + db + ";";
 			Statement cndb = conexion.createStatement();
 			cndb.executeUpdate(querydb);
 			String qtb1 = "CREATE TABLE if not exists " + tab1 + ""
-					+ "(Codigo int primary key auto_increment, Nombre nvarchar(100));";
+					+ "(Codigo int primary key, Nombre nvarchar(100));";
 			Statement st = conexion.createStatement();
 			st.executeUpdate(qtb1);
 			String qtb2 = "CREATE TABLE if not exists " + tab2 + ""
-					+ "(ID char(4) primary key, Nombre nvarchar(100));";
+					+ "(DNI varchar(9) primary key, NomApels nvarchar(255), Facultad int,"
+					+ "CONSTRAINT FK_Facultad FOREIGN KEY (Facultad) REFERENCES Facultad (Codigo));";
 			st.executeUpdate(qtb2);
 			String qtb3 = "CREATE TABLE if not exists " + tab3 + ""
-					+ "(CodigoPieza INT PRIMARY KEY, IdProveedor CHAR(4), Precio INT,"
-					+ "KEY CodigoP_idx (CodigoPieza), KEY IdP_idx (IdProveedor),"
-					+ "CONSTRAINT CodigoPieza FOREIGN KEY (CodigoPieza) REFERENCES Piezas (Codigo),"
-					+ "CONSTRAINT IdProveedor FOREIGN KEY (IdProveedor) REFERENCES Proveedores (ID));";
+					+ "(NumSerie varchar(4) primary key, Nombre nvarchar(100), Facultad int,"
+					+ "CONSTRAINT FK_Facultad1 FOREIGN KEY (Facultad) REFERENCES Facultad (Codigo));";
 			st.executeUpdate(qtb3);
+			String qtb4 = "CREATE TABLE if not exists " + tab4 + ""
+					+ "(DNI varchar(9), NumSerie varchar(4), Comienzo date, Fin date,"
+					+ " PRIMARY KEY(DNI, NumSerie),"
+					+ "CONSTRAINT FK_DNI FOREIGN KEY (DNI) REFERENCES Investigadores (DNI),"
+					+ "CONSTRAINT FK_NumSerie FOREIGN KEY (NumSerie) REFERENCES Equipos (NumSerie));";
+			st.executeUpdate(qtb4);
 			System.out.println("Tablas creadas");
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
