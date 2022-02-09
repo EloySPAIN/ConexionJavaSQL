@@ -137,7 +137,7 @@ public class Conexion {
 			System.out.println("Error al crear el insert");
 		}
 	}
-	
+	//Metodo para obtener los registros de la tabla
 	public static void getValuesUsuarios(String db, String table_name) {
 		try {
 			System.out.println("Tabla Usuarios:");
@@ -163,7 +163,7 @@ public class Conexion {
 		}
 	
 	}
-	
+	//Metodo para obtener los registros de la tabla
 	public static void getValuesTweet(String db, String table_name) {
 		try {
 			System.out.println("Tabla Tweet");
@@ -190,7 +190,7 @@ public class Conexion {
 		}
 	
 	}
-	
+	//Metodo para borrar registros
 	public static void deleteRecord(String db, String table_name, String ID) {
 		try {
 			String Querydb = "USE "+db+";";
@@ -208,7 +208,7 @@ public class Conexion {
 			System.out.println("Error al borrar el registro");
 		}
 	}
-	
+	//Metodo para borrar las tablas
 	public static void delTab(String db, String table_name) {
 		try {
 			String Querydb = "USE "+db+";";
