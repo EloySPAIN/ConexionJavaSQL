@@ -11,6 +11,8 @@ public class TwitterMain {
 		BD.crearInserts("Twitter");
 		BD.getValuesUsuarios("Twitter", "Usuarios");
 		BD.getValuesTweet("Twitter", "Tweet");
+		BD.deleteRecord("Twitter", "Tweet", "@hola1");
+		BD.delTab("Twitter", "Tweet");
 		BD.closeConnection();
 	}
 

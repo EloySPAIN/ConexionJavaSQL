@@ -140,9 +140,10 @@ public class Conexion {
 	
 	public static void getValuesUsuarios(String db, String table_name) {
 		try {
+			System.out.println("Tabla Usuarios:");
 			String Querydb = "USE "+db+";";
-			Statement stdb= conexion.createStatement();
-			stdb.executeUpdate(Querydb);
+			Statement cndb= conexion.createStatement();
+			cndb.executeUpdate(Querydb);
 						
 			String Query = "SELECT * FROM " + table_name;
 			Statement st = conexion.createStatement();
@@ -165,9 +166,10 @@ public class Conexion {
 	
 	public static void getValuesTweet(String db, String table_name) {
 		try {
+			System.out.println("Tabla Tweet");
 			String Querydb = "USE "+db+";";
-			Statement stdb= conexion.createStatement();
-			stdb.executeUpdate(Querydb);
+			Statement cndb= conexion.createStatement();
+			cndb.executeUpdate(Querydb);
 						
 			String Query = "SELECT * FROM " + table_name;
 			Statement st = conexion.createStatement();
@@ -195,15 +197,33 @@ public class Conexion {
 			Statement stdb= conexion.createStatement();
 			stdb.executeUpdate(Querydb);
 						
-			String Query = "DELETE FROM " + table_name + " WHERE ID = \"" + ID + "\"";
+			String Query = "DELETE FROM " + table_name + " WHERE id_nickname = \"" + ID + "\";";
 			Statement st = conexion.createStatement();
 			st.executeUpdate(Query);
 			
-			System.out.println("Registros de tabla ELIMINADOS con exito!");
+			System.out.println("Registro eliminado!");
 						
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
-			System.out.println("Error borrando el registro especificado");
+			System.out.println("Error al borrar el registro");
+		}
+	}
+	
+	public static void delTab(String db, String table_name) {
+		try {
+			String Querydb = "USE "+db+";";
+			Statement cndb= conexion.createStatement();
+			cndb.executeUpdate(Querydb);
+						
+			String Query = "DROP TABLE " + table_name + ";";
+			Statement st = conexion.createStatement();
+			st.executeUpdate(Query);
+			
+			System.out.println("Tabla Eliminada!");
+						
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			System.out.println("Error al borrar la tabla");
 		}
 	}	
 
