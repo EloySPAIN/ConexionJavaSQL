@@ -90,7 +90,7 @@ public class Conexion {
 				int cap = Integer.parseInt(Capacidad);
 
 				// Ponemos las variables como values
-				String ins = "INSERT INTO Almacen (Lugar, Capacidad) VALUES (?,?);";
+				String ins = "INSERT INTO Almacenes (Lugar, Capacidad) VALUES (?,?);";
 				ptst = conexion.prepareStatement(ins);
 				ptst.setString(1, Lugar);
 				ptst.setInt(2, cap);
