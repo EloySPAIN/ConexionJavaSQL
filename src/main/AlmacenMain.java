@@ -12,7 +12,7 @@ public class AlmacenMain {
 		BD.crearInserts("Almacen");
 		BD.getValuesAlmacen("Almacen", "Almacenes");
 		BD.getValuesCaja("Almacen", "Cajas");
-		BD.deleteRecord("Almacen", "Cajas", "@hola1");
+		BD.deleteRecord("Almacen", "Cajas", "1");
 		BD.delTab("Almacen", "Cajas");
 		BD.closeConnection();
 

@@ -97,7 +97,7 @@ public class Conexion {
 				ptst.executeUpdate();
 				ptst.close();
 				System.out.println("Datos inseridos");
-			} else if (tabla.equals("Caja")) {
+			} else if (tabla.equals("Cajas")) {
 				// Insertamos en diferentes variables los values
 				Scanner scan2 = new Scanner(System.in);
 				System.out.println("Escribe el numero de referencia: ");
@@ -112,7 +112,7 @@ public class Conexion {
 				int Alm = Integer.parseInt(Almacen);
 
 				// Ponemos las variables como values
-				String ins = "INSERT INTO Caja (NumReferencia, Contenido, Valor, Almacen) VALUES (?,?,?,?);";
+				String ins = "INSERT INTO Cajas (NumReferencia, Contenido, Valor, Almacen) VALUES (?,?,?,?);";
 				ptst = conexion.prepareStatement(ins);
 				ptst.setString(1, NumReferencia);
 				ptst.setString(2, Contenido);
