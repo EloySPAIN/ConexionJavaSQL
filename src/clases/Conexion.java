@@ -90,14 +90,14 @@ public class Conexion {
 				int cap = Integer.parseInt(Capacidad);
 
 				// Ponemos las variables como values
-				String ins = "INSERT INTO Tweet (Lugar, Capacidad) VALUES (?,?);";
+				String ins = "INSERT INTO Almacen (Lugar, Capacidad) VALUES (?,?);";
 				ptst = conexion.prepareStatement(ins);
 				ptst.setString(1, Lugar);
 				ptst.setInt(2, cap);
 				ptst.executeUpdate();
 				ptst.close();
 				System.out.println("Datos inseridos");
-			} else if (tabla.equals("Tweet")) {
+			} else if (tabla.equals("Caja")) {
 				// Insertamos en diferentes variables los values
 				Scanner scan2 = new Scanner(System.in);
 				System.out.println("Escribe el numero de referencia: ");
@@ -112,7 +112,7 @@ public class Conexion {
 				int Alm = Integer.parseInt(Almacen);
 
 				// Ponemos las variables como values
-				String ins = "INSERT INTO Tweet (NumReferencia, Contenido, Valor, Almacen) VALUES (?,?,?,?);";
+				String ins = "INSERT INTO Caja (NumReferencia, Contenido, Valor, Almacen) VALUES (?,?,?,?);";
 				ptst = conexion.prepareStatement(ins);
 				ptst.setString(1, NumReferencia);
 				ptst.setString(2, Contenido);
