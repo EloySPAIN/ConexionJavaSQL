@@ -138,7 +138,7 @@ public class Conexion {
 		}
 	}
 	
-	public static void getValues(String db, String table_name) {
+	public static void getValuesUsuarios(String db, String table_name) {
 		try {
 			String Querydb = "USE "+db+";";
 			Statement stdb= conexion.createStatement();
@@ -162,5 +162,49 @@ public class Conexion {
 		}
 	
 	}
+	
+	public static void getValuesTweet(String db, String table_name) {
+		try {
+			String Querydb = "USE "+db+";";
+			Statement stdb= conexion.createStatement();
+			stdb.executeUpdate(Querydb);
+						
+			String Query = "SELECT * FROM " + table_name;
+			Statement st = conexion.createStatement();
+			java.sql.ResultSet resultSet;
+			resultSet = st.executeQuery(Query);
+			
+			while (resultSet.next()) {
+				System.out.println("- ID: " +  resultSet.getString("id_mensajes") + " "
+						+ "- Mensaje: " +  resultSet.getString("texto") + " "
+						+ "- Imagenes: " +  resultSet.getString("imagenes") + " "
+						+ "- Videos: " +  resultSet.getString("videos") + " "
+						+ "- Usuario: " +  resultSet.getString("id_nickname") + " "
+						);
+			}
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			System.out.println("Error en la adquisicion de datos");
+		}
+	
+	}
+	
+	public static void deleteRecord(String db, String table_name, String ID) {
+		try {
+			String Querydb = "USE "+db+";";
+			Statement stdb= conexion.createStatement();
+			stdb.executeUpdate(Querydb);
+						
+			String Query = "DELETE FROM " + table_name + " WHERE ID = \"" + ID + "\"";
+			Statement st = conexion.createStatement();
+			st.executeUpdate(Query);
+			
+			System.out.println("Registros de tabla ELIMINADOS con exito!");
+						
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			System.out.println("Error borrando el registro especificado");
+		}
+	}	
 
 }

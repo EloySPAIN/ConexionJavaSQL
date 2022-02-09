@@ -9,7 +9,8 @@ public class TwitterMain {
 		BD.crearBD("Twitter");
 		BD.crearTabla("Twitter", "Usuarios", "Tweet");
 		BD.crearInserts("Twitter");
-		BD.getValues("Twitter", "Usuarios");
+		BD.getValuesUsuarios("Twitter", "Usuarios");
+		BD.getValuesTweet("Twitter", "Tweet");
 		BD.closeConnection();
 	}
 
